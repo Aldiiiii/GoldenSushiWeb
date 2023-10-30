@@ -1,8 +1,8 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12633612&assignment_repo_type=AssignmentRepo)
 # P3-Challenge-1
 
-- Tema Aplikasi: ...
-- CSS Framework: ...
+- Tema Aplikasi: Restaurant App
+- CSS Framework: Bootstrap
 
 Struktur Folder:
 
@@ -18,14 +18,14 @@ Target:
 - [ ] React: Class Component vs Function Component
 - [ ] Mempelajari State menggunakan useState
 - [ ] Mengirim Props baik berupa sebuah state atau function
-- [ ] Event Handling (onClick, onChange, onSubmit)
+- [X] Event Handling (onClick, onChange, onSubmit)
 - [ ] Conditional Rendering di dalam React
 - [ ] Looping List of Data di dalam React
 - [ ] Lifecycle component menggunakan useEffect
-- [ ] Membuat server (json-server)
+- [X] Membuat server (json-server)
 - [ ] Membuat react app untuk client-user (Styling)
 - [ ] Membuat react app untuk client-admin (CRUD)
-- [ ] Menentukan Thema Aplikasi
+- [X] Menentukan Thema Aplikasi
 - [ ] Menentukan Design dan pemilihan CSS Framework
 
 **Report:**

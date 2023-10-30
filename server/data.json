@@ -1,0 +1,144 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username" : "aldi",
+            "email": "aldi@mail.com",
+            "password": "12345",
+            "role": "admin",
+            "phoneNumber": "08123123123",
+            "address": "Jl. Raya Tajur"
+        }
+    ],
+    "items": [
+        {
+            "id": 1,
+            "name": "Aburi Gyuniku",
+            "description": "This is Aburi Gyuniku",
+            "price": 123000,
+            "imgUrl": "https://media.timeout.com/images/105980851/750/422/image.jpg",
+            "authorId": 1,
+            "categoryId": 5,
+            "createdAt": "date",
+            "updatedAt": "date"
+        },
+        {
+            "id": 2,
+            "name": "Baby Octopus",
+            "description": "This is Baby Octopus",
+            "price": 123000,
+            "imgUrl": "https://media.timeout.com/images/105980851/750/422/image.jpg",
+            "authorId": 1,
+            "categoryId": 1,
+            "createdAt": "date",
+            "updatedAt": "date"
+        },
+        {
+            "id": 3,
+            "name": "Egg Sashimi",
+            "description": "This is Egg Sashimi",
+            "price": 123000,
+            "imgUrl": "https://media.timeout.com/images/105980851/750/422/image.jpg",
+            "authorId": 1,
+            "categoryId": 2,
+            "createdAt": "date",
+            "updatedAt": "date"
+        },
+        {
+            "id": 4,
+            "name": "Baby Octopus Gunkan",
+            "description": "This is Baby Octopus Gunkan",
+            "price": 123000,
+            "imgUrl": "https://media.timeout.com/images/105980851/750/422/image.jpg",
+            "authorId": 1,
+            "categoryId": 3,
+            "createdAt": "date",
+            "updatedAt": "date"
+        },
+        {
+            "id": 5,
+            "name": "Beef Cheese Roll",
+            "description": "This is Beef Cheese Roll",
+            "price": 123000,
+            "imgUrl": "https://media.timeout.com/images/105980851/750/422/image.jpg",
+            "authorId": 1,
+            "categoryId": 4,
+            "createdAt": "date",
+            "updatedAt": "date"
+        },
+        {
+            "id": 6,
+            "name": "Beef Yakiniku Bowl",
+            "description": "This is Beef Yakiniku Bowl",
+            "price": 123000,
+            "imgUrl": "https://media.timeout.com/images/105980851/750/422/image.jpg",
+            "authorId": 1,
+            "categoryId": 6,
+            "createdAt": "date",
+            "updatedAt": "date"
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name" : "Appetizer"
+        },
+        {
+            "id": 2,
+            "name" : "Sashimi"
+        },
+        {
+            "id": 3,
+            "name" : "Gunkan"
+        },
+        {
+            "id": 4,
+            "name" : "Makimono"
+        },
+        {
+            "id": 5,
+            "name" : "Nigiri"
+        },
+        {
+            "id": 6,
+            "name" : "Rice & Noodle"
+        },
+        {
+            "id": 7,
+            "name" : "Fried"
+        },
+        {
+            "id": 8,
+            "name" : "Grill"
+        },
+        {
+            "id": 9,
+            "name" : "Bento"
+        },
+        {
+            "id": 10,
+            "name" : "Dessert"
+        },
+        {
+            "id": 11,
+            "name" : "Drink"
+        }
+    ],
+    "ingredients": [
+        {
+            "id": 1,
+            "itemId": 1,
+            "name": "rice"
+        },
+        {
+            "id":2,
+            "itemId": 2,
+            "name": "sakana"
+        },
+        {
+            "id":3,
+            "itemId": 3,
+            "name": "corn"
+        }
+    ]
+}
