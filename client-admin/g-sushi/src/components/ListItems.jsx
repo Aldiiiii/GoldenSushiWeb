@@ -1,4 +1,6 @@
-export default function ListItems() {
+import Table from "./Table";
+
+export default function ListItems({items}) {
   return (
     <>
       <div className="container-fluid">
@@ -24,7 +26,9 @@ export default function ListItems() {
             </tr>
           </thead>
           <tbody>
-            <tr></tr>
+            {items.map((item, i) => (
+              <Table key={item.id} item={item} i={i} />
+            ))}
           </tbody>
         </table>
       </div>
