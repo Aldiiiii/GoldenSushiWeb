@@ -81,47 +81,70 @@
     "categories": [
         {
             "id": 1,
-            "name" : "Appetizer"
+            "name" : "Appetizer",
+            "createdAt": "date",
+            "updatedAt": "date"
+            
         },
         {
             "id": 2,
-            "name" : "Sashimi"
+            "name" : "Sashimi",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 3,
-            "name" : "Gunkan"
+            "name" : "Gunkan",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 4,
-            "name" : "Makimono"
+            "name" : "Makimono",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 5,
-            "name" : "Nigiri"
+            "name" : "Nigiri",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 6,
-            "name" : "Rice & Noodle"
+            "name" : "Rice & Noodle",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 7,
-            "name" : "Fried"
+            "name" : "Fried",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 8,
-            "name" : "Grill"
+            "name" : "Grill",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 9,
-            "name" : "Bento"
+            "name" : "Bento",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 10,
-            "name" : "Dessert"
+            "name" : "Dessert",
+            "createdAt": "date",
+            "updatedAt": "date"
         },
         {
             "id": 11,
-            "name" : "Drink"
+            "name" : "Drink",
+            "createdAt": "date",
+            "updatedAt": "date"
         }
     ],
     "ingredients": [

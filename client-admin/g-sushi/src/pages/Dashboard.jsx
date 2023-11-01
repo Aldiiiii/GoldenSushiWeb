@@ -1,10 +1,11 @@
-import ListItems from "../components/ListItems";
+import ListItems from "./ItemList";
 import Categories from "./Categories";
 import RegisterAdmin from "./RegisterAdmin";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import { Outlet } from "react-router";
 
-export default function Dashboard({page, setPage, items}) {
+export default function Dashboard({page, setPage,}) {
   return (
     <>
       <div>
@@ -16,8 +17,8 @@ export default function Dashboard({page, setPage, items}) {
               <div id="content">
 
                 <Navbar/>
-
-                {page === 'dashboard' ? <ListItems items={items} /> : page === 'categories' ? <Categories /> : page === 'register' ? <RegisterAdmin /> : ''}
+                <Outlet />
+                {/* {page === 'dashboard' ? <ListItems /> : page === 'categories' ? <Categories /> : page === 'register' ? <RegisterAdmin /> : ''} */}
                        
 
               </div>
