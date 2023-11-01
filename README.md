@@ -44,7 +44,7 @@ Target:
 - [x] Lecture - React-Router
 - [ ] Membuat router user-side (min: home, detail)
 - [ ] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
-- [ ] Membuat privateRoute untuk admin
+- [x] Membuat privateRoute untuk admin
 
 **Report:**
 

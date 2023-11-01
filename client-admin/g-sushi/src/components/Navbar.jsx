@@ -1,4 +1,16 @@
+import { useNavigate } from "react-router";
+
 export default function Navbar() {
+
+    const navigate = useNavigate()
+
+    const getLogout = () => {
+        if(localStorage.access_token){
+            localStorage.clear()
+            navigate('/login')
+        }
+    }
+
   return (
     <>
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -50,7 +62,9 @@ export default function Navbar() {
           {/* <!-- Nav Item - User Information --> */}
           <li className="nav-item dropdown no-arrow">
             <span className="mr-2 d-none d-lg-inline text-gray-600 small">
-              <a className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+              <a 
+              onClick={getLogout}
+              className="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                 LOGOUT
               </a>
             </span>

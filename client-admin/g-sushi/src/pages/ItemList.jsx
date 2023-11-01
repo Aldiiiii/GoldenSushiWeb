@@ -2,9 +2,11 @@ import Table from "../components/Table";
 import useFetch from "../hooks/useFetch";
 import Create from "../components/CreateModal";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 
 export default function ItemList() {
-  const { data: items, error } = useFetch("items");
+  // const { data: items, error } = useFetch("items");
 
   return (
     <>

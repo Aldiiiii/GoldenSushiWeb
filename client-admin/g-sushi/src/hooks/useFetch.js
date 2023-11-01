@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function useFetch(url) {
   const [data, setData] = useState([]);
   const [error, setError] = useState({});
+
+  const dataItems = useSelector((state) => state.items)
+  const dispatch = useDispatch()
 
   async function fetchData() {
     try {
