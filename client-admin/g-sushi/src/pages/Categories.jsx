@@ -1,4 +1,9 @@
+import useFetch from "../hooks/useFetch";
+import Table from "../components/Table";
+
 export default function Categories() {
+  const { data: categories, error } = useFetch("categories");
+
   return (
     <>
       <div className="container-fluid">
@@ -8,9 +13,9 @@ export default function Categories() {
           <a className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             + Create Category
           </a>
-        </div>        
+        </div>
         {/* <!-- Categories --> */}
-        <table className="table table-striped">
+        <table className="table table-sm table-striped">
           <thead>
             <tr>
               <th scope="col">NO</th>
@@ -21,7 +26,14 @@ export default function Categories() {
             </tr>
           </thead>
           <tbody>
-            <tr></tr>
+            {categories.map((category, i) => (
+              <Table
+                category={category}
+                key={category.id}
+                columns={["name", "createdAt", "updatedAt"]}
+                i={i}
+              />
+            ))}
           </tbody>
         </table>
         {/* <!-- End of Categories --> */}
