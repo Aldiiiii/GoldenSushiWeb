@@ -1,12 +1,12 @@
 import { FETCH_CATEGORIES_SUCCESS } from "../actions/actionTypes";
 
 const initialState = {
-  categories: [],
+  data: [],
 };
 
-export default function categoriesReducer(state = initialState, actions) {
-  if (FETCH_CATEGORIES_SUCCESS) {
-    return { ...state, categories: actions.payload };
+export default function categoriesReducer(state = initialState, action) {
+    if (action.type === FETCH_CATEGORIES_SUCCESS) {
+    return { ...state, data: action.payload };
   } else {
     return state;
   }

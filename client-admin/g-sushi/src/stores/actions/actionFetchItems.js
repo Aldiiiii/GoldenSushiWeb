@@ -1,7 +1,7 @@
 import { FETCH_ITEMS_SUCCESS } from "./actionTypes";
 
-export function fetchItemsSuccess(){
-    return {type: FETCH_ITEMS_SUCCESS}
+export const fetchItemsSuccess = payload  => {
+    return {type: FETCH_ITEMS_SUCCESS, payload}
 }
 
 export const fetchItemsStart = () => {
