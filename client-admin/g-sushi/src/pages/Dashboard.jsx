@@ -17,9 +17,7 @@ export default function Dashboard({page, setPage,}) {
               <div id="content">
 
                 <Navbar/>
-                <Outlet />
-                {/* {page === 'dashboard' ? <ListItems /> : page === 'categories' ? <Categories /> : page === 'register' ? <RegisterAdmin /> : ''} */}
-                       
+                <Outlet />                   
 
               </div>
             </div>

@@ -1,8 +1,18 @@
-import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetch";
 import Table from "../components/Table";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchCategoriesStart } from "../stores/actions/actionFetchCategories";
+
 
 export default function Categories() {
-  const { data: categories, error } = useFetch("categories");
+  // const { data: categories, error } = useFetch("categories");
+  const categories = useSelector(state => state.categories.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCategoriesStart())
+  }, [])
 
   return (
     <>

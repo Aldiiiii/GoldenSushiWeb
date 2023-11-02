@@ -1,10 +1,19 @@
 import Table from "../components/Table";
-import useFetch from "../hooks/useFetch";
+// import useFetch from "../hooks/useFetch";
 import Create from "../components/CreateModal";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { fetchItemsStart } from "../stores/actions/actionFetchItems";
 
 export default function ItemList() {
-  const { data: items, error } = useFetch("items");
+  // const { data: items, error } = useFetch("items");
+  const items = useSelector(state => state.items.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchItemsStart())
+  }, [])
 
   return (
     <>
@@ -30,20 +39,20 @@ export default function ItemList() {
               </tr>
             </thead>
             <tbody>
-              {items.map((item, i) => (
-                <Table
-                  columns={[
-                    "name",
-                    "categoryId",
-                    "price",
-                    "authorId",
-                    "imgUrl",
-                  ]}
-                  key={item.id}
-                  item={item}
-                  i={i}
-                />
-              ))}
+                {items.map((item, i) => (
+                  <Table
+                    columns={[
+                      "name",
+                      "categoryId",
+                      "price",
+                      "authorId",
+                      "imgUrl",
+                    ]}
+                    key={item.id}
+                    item={item}
+                    i={i}
+                  />
+                ))}
             </tbody>
           </table>
         </div>
