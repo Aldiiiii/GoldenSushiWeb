@@ -19,7 +19,7 @@ export default function Categories() {
       <div className="container-fluid">
         {/* <!-- Page Heading --> */}
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 className="h3 mb-0 text-gray-800">Items</h1>
+          <h1 className="h3 mb-0 text-gray-800">Category List</h1>
           <a className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             + Create Category
           </a>

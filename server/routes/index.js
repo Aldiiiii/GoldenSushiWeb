@@ -3,7 +3,7 @@ const router = express.Router()
 const adminRouter = require('./admin')
 const clientRouter = require('./client')
 
-router.use('/', adminRouter)
 router.use('/pub', clientRouter)
+router.use('/', adminRouter)
 
 module.exports = router

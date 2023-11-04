@@ -2,17 +2,25 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import Additional from "./Additional";
+import { useEffect } from "react";
 
 function CreateModal() {
   const [show, setShow] = useState(false);
+  const [addIngredient, setAddIngredient] = useState({
+    inputForm: [],
+  });
 
   const [form, setForm] = useState({
     name: "",
     description: "",
     price: "",
     categoryId: "",
-    Ingredients: [],
+    ingredients: [],
   });
+
+  const bahanBahan = form.ingredients;
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
 
@@ -21,11 +29,47 @@ function CreateModal() {
       [name]: value,
     });
   };
+
+  const ingredientsHandler = (e) => {
+    const { name, value } = e.target;
+    console.log(e);
+    // setForm({
+    //   ...form,
+    //   [name]: [...form.ingredients, value],
+    // });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
     console.log(form);
   };
+
+  const addInputForm = () => {
+    const add = <Additional />;
+    setAddIngredient({
+      ...addIngredient,
+      newForm: addIngredient.inputForm.push(
+        <Additional
+          form={form}
+          key={addIngredient.inputForm.length}
+          removeInputForm={removeInputForm}
+          ingredientsHandler={ingredientsHandler}
+        />
+      ),
+    });
+  };
+
+  const removeInputForm = () => {
+    setAddIngredient({
+      ...addIngredient,
+      newForm: addIngredient.inputForm.pop(),
+    });
+  };
+
+  useEffect(() => {
+    console.log(addIngredient);
+  }, [addIngredient]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,7 +79,6 @@ function CreateModal() {
       <Button variant="primary" onClick={handleShow}>
         + Create Item
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create New Item</Modal.Title>
@@ -83,44 +126,39 @@ function CreateModal() {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Ingredient</Form.Label>
+              <Form.Label>Image URL</Form.Label>
               <Form.Control
                 type="text"
                 name="imgUrl"
                 onChange={changeHandler}
-                placeholder="Main Ingredient"
+                placeholder=""
                 autoFocus
               />
-              <div style={{ display: "flex" }}>
-                <Form.Control
-                  type="text"
-                  placeholder="Additional Ingredient"
-                  autoFocus
-                />{" "}
-                <Button variant="white" className="text-danger">
-                  Remove
-                </Button>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Ingredient</Form.Label>
+              <Form.Control
+                name="ingredients2"
+                onChange={(e) =>
+                  setForm({ ...form, ingredients2: e.target.value })
+                }
+                className="mb-2"
+                type="text"
+                placeholder="Ingredient"
+                autoFocus
+              />{" "}
+              <div>
+                {addIngredient.inputForm.map((el, i) => {
+                  return el;
+                })}
               </div>
-              <div style={{ display: "flex" }}>
-                <Form.Control
-                  type="text"
-                  placeholder="Additional Ingredient"
-                  autoFocus
-                />{" "}
-                <Button variant="white" className="text-danger">
-                  Remove
-                </Button>
-              </div>
-              <div style={{ display: "flex" }}>
-                <Form.Control
-                  type="text"
-                  placeholder="Additional Ingredient"
-                  autoFocus
-                />{" "}
-                <Button variant="white" className="text-danger">
-                  Remove
-                </Button>
-              </div>              
+              <Button
+                onClick={addInputForm}
+                variant="white"
+                className="text-success"
+              >
+                Add more ingredient
+              </Button>
             </Form.Group>
           </Form>
         </Modal.Body>

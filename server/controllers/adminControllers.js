@@ -1,4 +1,4 @@
-const { User, Item, Ingredients, sequelize } = require("../models");
+const { User, Item, Ingredients, Category, sequelize } = require("../models");
 const bcrypt = require("bcryptjs");
 const { createToken } = require("../helper/jwt");
 
@@ -134,9 +134,43 @@ class AdminController {
     try {
         const {id} = req.params
         const findItem = await Item.findByPk(id)
-    
+        if(!findItem){
+            throw {name: "Data not found"}
+        }
+        res.status(200).json(findItem)
     } catch (error) {
         next(error)
+    }
+  }
+
+  static async delete(req, res, next) {
+    try {
+        const { id } = req.params
+        const findItem = await Item.findByPk(id)
+        if(!findItem){
+            throw {name: "Data not found"}
+        }
+        await Item.destroy({
+            where: {id}
+        })
+        res.status(200).json({id: findItem.id, name: findItem.name})
+    } catch (error) {
+        next(error)
+    }
+  }
+
+  // Categories
+  static async categories(req, res, next){
+    try {
+      const data = await Category.findAll({
+        order: [['id', 'ASC']]
+      })
+      if(!data){
+        throw {name: "Data not found"}
+      }
+      res.status(200).json(data)
+    } catch (error) {
+      next(error)
     }
   }
 }

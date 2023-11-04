@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
 import { Outlet } from 'react-router-dom'
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
 
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  // const [page, setPage] = useState("dashboard")
 
   return (
     <>
       <Outlet/>
-      {/* {page === 'login' ? <Login /> : <Dashboard setPage={setPage} page={page}/>}      */}
+      <ToastContainer />
     </>
   );
 }

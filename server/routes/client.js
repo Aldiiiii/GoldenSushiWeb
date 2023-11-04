@@ -1,8 +1,8 @@
 const express = require('express')
+const ClientController = require('../controllers/clientControllers')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send("tralala ini dari client routes")
-})
+router.get('/items', ClientController.items)
+router.get('/items/:id', ClientController.items)
 
 module.exports = router

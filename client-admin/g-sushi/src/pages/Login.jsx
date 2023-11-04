@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from 'react-redux'
+import { getLoginStart } from "../stores/actions/actionCreators";
+import {useNavigate} from "react-router-dom"
+
 
 export default function Login() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -17,8 +24,7 @@ export default function Login() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-
-    console.log(loginForm)
+    dispatch(getLoginStart({email: loginForm.email, password: loginForm.password}, navigate))
   }
 
   return (
@@ -61,7 +67,9 @@ export default function Login() {
                           <div className="form-group">
                             <input
                               name="password"
+                              // onChange={changeHandler}
                               onChange={changeHandler}
+
                               type="password"
                               className="form-control form-control-user"
                               placeholder="Password"
@@ -84,7 +92,7 @@ export default function Login() {
                             Google
                           </a> */}
                         </form>
-                        <hr />
+                        {/* <hr /> */}
                         {/* <div className="text-center">
                           <a className="small">Create an Account!</a>
                         </div> */}

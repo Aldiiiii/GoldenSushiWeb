@@ -12,5 +12,6 @@ router.get('/items', AdminController.items)
 // router.post('/items', AdminController.add)
 router.put('/items', AdminController.edit)
 router.get('/items/:id', AdminController.itemById)
+router.get('/categories', AdminController.categories)
 
 module.exports = router
