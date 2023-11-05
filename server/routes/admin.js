@@ -9,9 +9,11 @@ router.post('/login', AdminController.login)
 router.use(authentication)
 
 router.get('/items', AdminController.items)
-// router.post('/items', AdminController.add)
+router.post('/items', AdminController.add)
 router.put('/items', AdminController.edit)
+router.delete('/items', AdminController.delete)
 router.get('/items/:id', AdminController.itemById)
 router.get('/categories', AdminController.categories)
+router.delete('/categories', AdminController.deleteCategories)
 
 module.exports = router
