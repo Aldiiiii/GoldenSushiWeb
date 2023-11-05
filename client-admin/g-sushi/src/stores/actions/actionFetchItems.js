@@ -14,6 +14,7 @@ export const fetchItemsStart = () => {
                 }
             })
             const responseBody = await response.json()
+            console.log("ke trigger")
             dispatch(fetchItemsSuccess(responseBody))
         } catch (error) {
             console.log(error)

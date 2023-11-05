@@ -3,24 +3,20 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import useToggleModal from "../hooks/useToggleModal";
+import { updateItem } from "../stores/actions/actionCreators";
 import { useDispatch } from "react-redux";
-import { createItem } from "../stores/actions/actionCreators";
 
-
-function CreateModal({ categories }) {
+function EditModal({ item, categories }) {
   const [show, handleClose, handleShow] = useToggleModal();
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    name: "",
-    description: "",
-    price: "",
-    categoryId: "",
-    imgUrl: "",
-    ingredients: [
-      {
-        name: "",
-      },
-    ],
+    id: item.id,
+    name: item.name,
+    description: item.description,
+    price: item.price,
+    categoryId: item.categoryId,
+    imgUrl: item.imgUrl,
+    ingredients: item.Ingredients,
   });
 
   const changeHandler = (e) => {
@@ -35,13 +31,13 @@ function CreateModal({ categories }) {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(createItem(form, handleClose));
+    dispatch(updateItem(form, handleClose));
   };
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        + Create Item
+      <Button variant="light" onClick={handleShow}>
+        Edit
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -52,6 +48,7 @@ function CreateModal({ categories }) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
               <Form.Control
+                value={form.name}
                 type="text"
                 name="name"
                 onChange={changeHandler}
@@ -64,6 +61,7 @@ function CreateModal({ categories }) {
             >
               <Form.Label>Description</Form.Label>
               <Form.Control
+                value={form.description}
                 as="textarea"
                 name="description"
                 onChange={changeHandler}
@@ -74,6 +72,7 @@ function CreateModal({ categories }) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Price</Form.Label>
               <Form.Control
+                value={form.price}
                 type="number"
                 name="price"
                 onChange={changeHandler}
@@ -85,6 +84,7 @@ function CreateModal({ categories }) {
               <Form.Select
                 name="categoryId"
                 onChange={changeHandler}
+                value={form.categoryId}
                 aria-label="Default select example"
               >
                 <option>Open this select category</option>
@@ -98,6 +98,7 @@ function CreateModal({ categories }) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Image URL</Form.Label>
               <Form.Control
+                value={form.imgUrl}
                 type="text"
                 name="imgUrl"
                 onChange={changeHandler}
@@ -120,7 +121,7 @@ function CreateModal({ categories }) {
                           ...form,
                           ingredients: [
                             ...form.ingredients.slice(0, index),
-                            { name: e.target.value },
+                            {...form.ingredients[index], name: e.target.value },
                             ...form.ingredients.slice(index + 1),
                           ],
                         })
@@ -178,4 +179,4 @@ function CreateModal({ categories }) {
   );
 }
 
-export default CreateModal;
+export default EditModal;

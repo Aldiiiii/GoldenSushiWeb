@@ -3,16 +3,16 @@ import Table from "../components/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCategoriesStart } from "../stores/actions/actionFetchCategories";
-
+import { useState } from "react";
 
 export default function Categories() {
   // const { data: categories, error } = useFetch("categories");
-  const categories = useSelector(state => state.categories.data)
-  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.categories.data);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategoriesStart())
-  }, [])
+    dispatch(fetchCategoriesStart());
+  }, []);
 
   return (
     <>
@@ -20,9 +20,7 @@ export default function Categories() {
         {/* <!-- Page Heading --> */}
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">Category List</h1>
-          <a className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-            + Create Category
-          </a>
+          {/* <CreateCategoryModal /> */}
         </div>
         {/* <!-- Categories --> */}
         <table className="table table-sm table-striped">
