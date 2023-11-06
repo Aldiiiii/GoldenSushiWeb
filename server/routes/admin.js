@@ -14,6 +14,8 @@ router.put('/items', AdminController.edit)
 router.delete('/items', AdminController.delete)
 router.get('/items/:id', AdminController.itemById)
 router.get('/categories', AdminController.categories)
+router.post('/categories', AdminController.createCategories)
 router.delete('/categories', AdminController.deleteCategories)
+
 
 module.exports = router

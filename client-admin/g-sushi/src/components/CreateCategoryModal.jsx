@@ -4,10 +4,9 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import useToggleModal from "../hooks/useToggleModal";
 import { useDispatch } from "react-redux";
-import { createItem } from "../stores/actions/actionCreators";
+import { createCategory } from "../stores/actions/actionCreators";
 
-
-function CreateCategoryModal({ categories }) {
+function CreateCategoryModal() {
   const [show, handleClose, handleShow] = useToggleModal();
   const dispatch = useDispatch();
   const [form, setForm] = useState({
@@ -25,7 +24,7 @@ function CreateCategoryModal({ categories }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(createItem(form, handleClose));
+    dispatch(createCategory(form, handleClose));
   };
 
   return (
@@ -47,7 +46,7 @@ function CreateCategoryModal({ categories }) {
                 onChange={changeHandler}
                 autoFocus
               />
-            </Form.Group>            
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>

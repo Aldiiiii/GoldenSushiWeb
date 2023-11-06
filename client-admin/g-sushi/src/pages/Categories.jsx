@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCategoriesStart } from "../stores/actions/actionFetchCategories";
 import { useState } from "react";
+import CreateCategoryModal from "../components/createCategoryModal";
 
 export default function Categories() {
   // const { data: categories, error } = useFetch("categories");
@@ -20,7 +21,7 @@ export default function Categories() {
         {/* <!-- Page Heading --> */}
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">Category List</h1>
-          {/* <CreateCategoryModal /> */}
+          <CreateCategoryModal />
         </div>
         {/* <!-- Categories --> */}
         <table className="table table-sm table-striped">

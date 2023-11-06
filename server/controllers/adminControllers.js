@@ -209,6 +209,7 @@ class AdminController {
       const response = await Category.create({name})
       res.status(201).json(response)
     } catch (error) {
+      console.log(error)
       next(error)
     }
   }

@@ -2,7 +2,7 @@ import IngredientsModal from "./IngredientsModal";
 import CreateModal from "./CreateModal";
 import EditModal from "./EditModal";
 import {useDispatch} from "react-redux"
-import {actDeleteItem} from "../stores/actions/actionCreators";
+import {actDeleteCategory, actDeleteItem} from "../stores/actions/actionCreators";
 
 export default function Table({ item, columns, i, category, categories }) {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ export default function Table({ item, columns, i, category, categories }) {
     dispatch(actDeleteItem(itemId))
   };
   const deleteCategory = (categoryId) => {
-    console.log(categoryId);
+    dispatch(actDeleteCategory(categoryId))
   };
 
   return (

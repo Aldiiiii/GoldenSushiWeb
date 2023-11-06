@@ -127,25 +127,29 @@ export function actDeleteItem(payload) {
 }
 
 // create category
-export function createCategory(payload){
+export function createCategory(payload, handleClose){
   return async (dispatch) => {
     try {
       let response = await fetch(baseUrl + "/categories", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           access_token: localStorage.access_token,
-          body: JSON.stringify(payload)
-        }
+        },
+        body: JSON.stringify(payload)
       })
       if(!response.ok){
-        throw {name: "Create failed"}
+        throw {name: "Create failed", response}
       }
-      response = response.json()
+      response = await response.json()
       toast.success(`Succes add category ${response.name}`, {
         position: toast.POSITION.TOP_RIGHT
       })
       dispatch(fetchCategoriesStart())
+      handleClose()
     } catch (error) {
+      let response = await error.response.json()
+      console.log(error, response)
       toast.error(error.name, {
         position: toast.POSITION.TOP_RIGHT
       })
@@ -181,4 +185,34 @@ export function actDeleteCategory(payload) {
       });
     }
   };
+}
+
+export function createAdmin(payload, navigate){
+  return async () => {
+    try {
+      let response = await fetch(baseUrl + "/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+        body: JSON.stringify(payload)
+      })
+      if(!response.ok){
+        throw {name: "Create admin failed", response}
+      }
+      response = await response.json()
+      toast.success(`Create admin success`, {
+        position: toast.POSITION.TOP_RIGHT
+      })
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+      let response = error.response
+      response = await response.json()
+      toast.error(response.message, {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    }
+  }
 }
