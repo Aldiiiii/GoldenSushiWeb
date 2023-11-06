@@ -2,7 +2,8 @@ import { toast } from "react-toastify";
 import { fetchItemsStart } from "./actionFetchItems";
 import { fetchCategoriesStart } from "./actionFetchCategories";
 
-const baseUrl = "http://localhost:3000";
+// const baseUrl = "http://localhost:3000";
+const baseUrl = "https://sushi.amrinaldi.site"
 
 // login
 export const getLoginStart = (payload, navigate) => {

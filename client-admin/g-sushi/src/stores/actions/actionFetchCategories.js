@@ -4,10 +4,12 @@ export function fetchCategoriesSuccess(payload){
     return {type: FETCH_CATEGORIES_SUCCESS, payload}
 }
 
+const baseUrl = "https://sushi.amrinaldi.site"
+
 export const fetchCategoriesStart = () => {
     return async dispatch => {
         try {
-            const response = await fetch("http://localhost:3000/categories", {
+            const response = await fetch( baseUrl + "/categories", {
                 headers: {
                     "Content-Type": "application/json",
                     "access_token": localStorage.access_token
