@@ -2,17 +2,27 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import useToggleModal from "../hooks/useToggleModal";
+import { useDispatch } from "react-redux";
+import { createItem } from "../stores/actions/actionCreators";
 
-function CreateModal() {
-  const [show, setShow] = useState(false);
 
+function CreateModal({ categories }) {
+  const [show, handleClose, handleShow] = useToggleModal();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: "",
     description: "",
     price: "",
     categoryId: "",
-    Ingredients: [],
+    imgUrl: "",
+    ingredients: [
+      {
+        name: "",
+      },
+    ],
   });
+
   const changeHandler = (e) => {
     const { name, value } = e.target;
 
@@ -21,21 +31,18 @@ function CreateModal() {
       [name]: value,
     });
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log(form);
+    dispatch(createItem(form, handleClose));
   };
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
         + Create Item
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create New Item</Modal.Title>
@@ -75,52 +82,86 @@ function CreateModal() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Category</Form.Label>
-              <Form.Control
-                type="text"
+              <Form.Select
                 name="categoryId"
                 onChange={changeHandler}
-                autoFocus
-              />
+                aria-label="Default select example"
+              >
+                <option>Open this select category</option>
+                {categories.map((el) => (
+                  <option value={el.id} key={el.id}>
+                    {el.name}
+                  </option>
+                ))}
+              </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Ingredient</Form.Label>
+              <Form.Label>Image URL</Form.Label>
               <Form.Control
                 type="text"
                 name="imgUrl"
                 onChange={changeHandler}
-                placeholder="Main Ingredient"
+                placeholder=""
                 autoFocus
               />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Ingredients</Form.Label>
               <div style={{ display: "flex" }}>
-                <Form.Control
-                  type="text"
-                  placeholder="Additional Ingredient"
-                  autoFocus
-                />{" "}
-                <Button variant="white" className="text-danger">
-                  Remove
-                </Button>
+                <div>
+                  {form.ingredients.map((item, index) => (
+                    <Form.Control
+                      className="mb-2"
+                      style={{ width: "390px" }}
+                      key={index}
+                      value={item.name}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          ingredients: [
+                            ...form.ingredients.slice(0, index),
+                            { name: e.target.value },
+                            ...form.ingredients.slice(index + 1),
+                          ],
+                        })
+                      }
+                    />
+                  ))}
+                </div>
+                <div className="">
+                  {form.ingredients.map((item, index) => (
+                    <Button
+                      className="mb-2 text-danger"
+                      key={index}
+                      variant="white"
+                      onClick={() => {
+                        const currentItems = form.ingredients;
+                        currentItems.splice(index, 1);
+
+                        setForm({
+                          ...form,
+                          ingredients: currentItems,
+                        });
+                      }}
+                    >
+                      Remove
+                    </Button>
+                  ))}
+                </div>
               </div>
-              <div style={{ display: "flex" }}>
-                <Form.Control
-                  type="text"
-                  placeholder="Additional Ingredient"
-                  autoFocus
-                />{" "}
-                <Button variant="white" className="text-danger">
-                  Remove
-                </Button>
-              </div>
-              <div style={{ display: "flex" }}>
-                <Form.Control
-                  type="text"
-                  placeholder="Additional Ingredient"
-                  autoFocus
-                />{" "}
-                <Button variant="white" className="text-danger">
-                  Remove
-                </Button>
-              </div>              
+
+              <Button
+                onClick={() =>
+                  setForm({
+                    ...form,
+                    ingredients: [...form.ingredients, { name: "" }],
+                  })
+                }
+                variant="white"
+                className="text-success"
+              >
+                Add ingredient
+              </Button>
             </Form.Group>
           </Form>
         </Modal.Body>

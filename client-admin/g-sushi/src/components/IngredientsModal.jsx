@@ -6,9 +6,8 @@ import Row from "react-bootstrap/Row";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 
-function IngredientsModal() {
+function IngredientsModal({ingredients, imgUrl}) {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -32,40 +31,30 @@ function IngredientsModal() {
               <div style={{justifyContent: "center", display: "flex", alignContent:"center"}}>                
                   <Image
                     src={
-                      "https://cdn.britannica.com/52/128652-050-14AD19CA/Maki-zushi.jpg"
+                      imgUrl
                     }
                     style={{ height: "275px", width: "auto" }}
                     rounded
                   />                
               </div>
-              <div style={{display: "flex", marginTop:"20px"}}>
-                <Col xs={6} md={4}>
-                  <Image
-                    src={
-                      "https://cdn.britannica.com/52/128652-050-14AD19CA/Maki-zushi.jpg"
-                    }
-                    style={{ height: "75px", width: "auto" }}
-                    rounded
-                  />
-                </Col>
-                <Col xs={6} md={4}>
-                  <Image
-                    src={
-                      "https://cdn.britannica.com/52/128652-050-14AD19CA/Maki-zushi.jpg"
-                    }
-                    style={{ height: "75px", width: "auto" }}
-                    rounded
-                  />
-                </Col>
-                <Col xs={6} md={4}>
-                  <Image
-                    src={
-                      "https://cdn.britannica.com/52/128652-050-14AD19CA/Maki-zushi.jpg"
-                    }
-                    style={{ height: "75px", width: "auto" }}
-                    rounded
-                  />
-                </Col>
+              <div style={{marginTop:"20px"}}>
+                    <h4>Ingredients: </h4>
+                    <table className="ml-4">
+                      <thead>
+                        <tr>
+                          <th style={{width:"45px"}}>No.</th>
+                          <th>Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {ingredients.map((el,i) => (
+                          <tr key={el.id}>
+                          <td>{i+1}.</td>
+                          <td>{el.name}</td>
+                        </tr>
+                        ))}
+                      </tbody>
+                    </table>
               </div>
             </Row>
           </Container>

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import { toast } from 'react-toastify'
 
 export default function Navbar() {
 
@@ -6,6 +7,9 @@ export default function Navbar() {
 
     const getLogout = () => {
         if(localStorage.access_token){
+            toast.success("See you next time", {
+              position: toast.POSITION.TOP_RIGHT
+            })
             localStorage.clear()
             navigate('/login')
         }
